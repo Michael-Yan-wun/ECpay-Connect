@@ -66,7 +66,7 @@ Hi Michael! 這是一個整合了 **ECPay (綠界科技)** 全方位金流服務
 ## 🧪 金流測試流程
 
 1. 點擊進入首頁將自動導向綠界測試支付頁面。
-2. 使用綠界提供的[測試信用卡卡號](https://developers.ecpay.com.tw/?p=2851)進行模擬支付。
+2. 使用綠界提供的[測試信用卡卡號](https://developers.ecpay.com.tw/2856/)進行模擬支付。
 3. 支付成功後，系統會接收綠界的 `Return_URL` 通知並導向 `Order_Result_URL`。
 
 ## 📖 參考資源
