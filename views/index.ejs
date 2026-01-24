@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Michael Shop - 品質保證，快速到貨">
+  <title>Michael Shop - 品質保證購物網</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top">
+      Michael Shop · 滿額折扣 · 全館 0% 利率
+    </div>
+    <div class="header-main">
+      <a href="/" class="logo">
+        <span class="logo-text">Michael</span>
+        <span class="logo-badge">Shop</span>
+      </a>
+      <div class="search-bar">
+        <input type="text" placeholder="輸入關鍵字，例如：iPhone 15, Dyson, 運動..." id="searchInput">
+        <button type="button">🔍</button>
+      </div>
+      <div class="header-actions">
+        <div class="header-action" id="cartBtn">
+          <span class="icon">🛒</span>
+          <span class="cart-count" id="cartCount">0</span>
+          <span>購物車</span>
+        </div>
+        <div class="header-action" id="authBtn">
+          <span class="icon">👤</span>
+          <span id="authText">登入</span>
+        </div>
+        <div class="user-info" id="userInfo" style="display: none;">
+          <span class="user-email" id="userEmail"></span>
+          <button class="btn-logout" id="logoutBtn">登出</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category Navigation -->
+  <nav class="category-nav">
+    <div class="category-nav-inner">
+      <a href="#products" class="category-nav-item active" data-category="all"><span class="icon">🔥</span> 全部商品</a>
+      <a href="#products" class="category-nav-item" data-category="3C 科技"><span class="icon">💻</span> 3C 科技</a>
+      <a href="#products" class="category-nav-item" data-category="居家生活"><span class="icon">🏠</span> 居家生活</a>
+      <a href="#products" class="category-nav-item" data-category="美妝保養"><span class="icon">💄</span> 美妝保養</a>
+      <a href="#products" class="category-nav-item" data-category="流行服飾"><span class="icon">👜</span> 流行服飾</a>
+      <a href="#products" class="category-nav-item" data-category="遊戲娛樂"><span class="icon">🎮</span> 遊戲娛樂</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-banner">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=500&fit=crop" alt="夏日感謝祭">
+        <div class="hero-banner-content">
+          <span class="hero-banner-tag">限時優惠</span>
+          <h2>夏日感謝祭</h2>
+          <p>指定家電 75 折起・滿額再抽 iPhone 15</p>
+          <a href="#products" class="hero-banner-btn">立即選購</a>
+        </div>
+      </div>
+      <div class="hero-sidebar">
+        <div class="sidebar-card">
+          <span class="icon">🔥</span>
+          <h4>今日最殺</h4>
+          <p>限時 24 小時</p>
+        </div>
+        <div class="sidebar-card">
+          <span class="icon">💎</span>
+          <h4>鑽石大紅包</h4>
+          <p>天天領購物金</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommended Section -->
+    <section class="recommend-section">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>本季推薦</h2>
+        </div>
+        <a href="#" class="section-more">查看更多 →</a>
+      </div>
+      <div class="recommend-grid">
+        <div class="recommend-card" data-filter="3C 科技">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=300&h=300&fit=crop" alt="科技">
+          <span class="recommend-badge">24h 購物</span>
+          <div class="recommend-overlay">
+            <span class="recommend-title">3C 科技新品</span>
+          </div>
+        </div>
+        <div class="recommend-card" data-filter="居家生活">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=300&fit=crop" alt="居家">
+          <span class="recommend-badge">熱銷</span>
+          <div class="recommend-overlay">
+            <span class="recommend-title">居家生活好物</span>
+          </div>
+        </div>
+        <div class="recommend-card" data-filter="美妝保養">
+          <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=300&h=300&fit=crop" alt="美妝">
+          <span class="recommend-badge">24h 購物</span>
+          <div class="recommend-overlay">
+            <span class="recommend-title">美妝保養專區</span>
+          </div>
+        </div>
+        <div class="recommend-card" data-filter="流行服飾">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop" alt="時尚">
+          <span class="recommend-badge">新品</span>
+          <div class="recommend-overlay">
+            <span class="recommend-title">時尚穿搭精選</span>
+          </div>
+        </div>
+        <div class="recommend-card" data-filter="遊戲娛樂">
+          <img src="https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=300&h=300&fit=crop" alt="遊戲">
+          <span class="recommend-badge">24h 購物</span>
+          <div class="recommend-overlay">
+            <span class="recommend-title">遊戲娛樂專區</span>
+          </div>
+        </div>
+        <div class="recommend-card" data-filter="hot">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=300&h=300&fit=crop" alt="熱銷">
+          <span class="recommend-badge">🔥 限時</span>
+          <div class="recommend-overlay">
+            <span class="recommend-title">今日熱銷排行</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+      <div class="section-header">
+        <div class="section-title">
+          <h2>熱銷商品</h2>
+        </div>
+        <a href="#" class="section-more">查看更多 →</a>
+      </div>
+      <div class="products-grid">
+        <% products.forEach(function(product) { %>
+          <div class="product-card" data-product-id="<%= product.id %>">
+            <div class="product-image">
+              <img src="<%= product.image %>" alt="<%= product.name %>">
+              <div class="product-badges">
+                <% if(product.isHot) { %><span class="badge badge-24h">24h</span>
+                  <% } %>
+                    <% if(product.isNew) { %><span class="badge badge-new">新品</span>
+                      <% } %>
+                        <% if(product.discount) { %><span class="badge badge-sale">
+                            <%= product.discount %>折
+                          </span>
+                          <% } %>
+              </div>
+            </div>
+            <div class="product-info">
+              <div class="product-category">
+                <%= product.category %>
+              </div>
+              <h3 class="product-name">
+                <%= product.name %>
+              </h3>
+              <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(<%= product.reviews %>)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">$<%= product.price.toLocaleString() %></span>
+                <% if(product.originalPrice) { %>
+                  <span class="original-price">$<%= product.originalPrice.toLocaleString() %></span>
+                  <% } %>
+              </div>
+              <div class="product-actions">
+                <button class="btn btn-primary add-to-cart" data-product='<%- JSON.stringify(product) %>'>
+                  加入購物車
+                </button>
+                <button class="btn btn-outline btn-icon">❤️</button>
+              </div>
+            </div>
+          </div>
+          <% }); %>
+      </div>
+    </section>
+  </main>
+
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>👤 會員登入</h3>
+        <button class="modal-close" id="closeLogin">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="padding: 10px 0;">
+          <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 500;">電子郵件</label>
+            <input type="email" id="loginEmail" placeholder="example@email.com"
+              style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;">
+          </div>
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 5px; font-weight: 500;">密碼</label>
+            <input type="password" id="loginPassword" placeholder="請輸入密碼"
+              style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;">
+          </div>
+          <div id="loginError" style="color: #e31937; font-size: 13px; margin-bottom: 10px; display: none;"></div>
+          <button id="loginSubmit" class="btn btn-primary" style="width: 100%; padding: 14px;">
+            登入
+          </button>
+          <div style="text-align: center; margin-top: 15px; font-size: 13px; color: #666;">
+            測試帳號：michael@example.com / password123
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div class="modal-overlay" id="cartModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>🛒 購物車</h3>
+        <button class="modal-close" id="closeCart">&times;</button>
+      </div>
+      <div class="modal-body" id="cartItems">
+        <div class="cart-empty">
+          <span class="icon">🛒</span>
+          <p>購物車是空的</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="cart-total">
+          <span class="cart-total-label">總計</span>
+          <span class="cart-total-price" id="cartTotal">$0</span>
+        </div>
+        <form id="checkoutForm" action="/checkout" method="POST">
+          <input type="hidden" name="cartData" id="cartDataInput">
+          <button type="submit" class="btn btn-primary checkout-btn" id="checkoutBtn" disabled>
+            前往結帳
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>關於我們</h4>
+        <ul>
+          <li><a href="#">品牌故事</a></li>
+          <li><a href="#">加入我們</a></li>
+          <li><a href="#">媒體報導</a></li>
+          <li><a href="#">ESG 永續</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>顧客服務</h4>
+        <ul>
+          <li><a href="#">訂單查詢</a></li>
+          <li><a href="#">退換貨說明</a></li>
+          <li><a href="#">常見問題</a></li>
+          <li><a href="#">線上客服</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>購物須知</h4>
+        <ul>
+          <li><a href="#">付款方式</a></li>
+          <li><a href="#">配送說明</a></li>
+          <li><a href="#">會員權益</a></li>
+          <li><a href="#">隱私權政策</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>追蹤我們</h4>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LINE</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Michael Shop. All Rights Reserved.</span>
+      <div class="payment-icons">
+        <span class="payment-icon">VISA</span>
+        <span class="payment-icon">MasterCard</span>
+        <span class="payment-icon">JCB</span>
+        <span class="payment-icon">綠界科技</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script>
+    // ==================== 全域變數 ====================
+    let cart = [];
+    let currentUser = null;
+    let authToken = localStorage.getItem('authToken');
+
+    // DOM Elements
+    const cartBtn = document.getElementById('cartBtn');
+    const cartModal = document.getElementById('cartModal');
+    const closeCart = document.getElementById('closeCart');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const cartCount = document.getElementById('cartCount');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const cartDataInput = document.getElementById('cartDataInput');
+    const toastContainer = document.getElementById('toastContainer');
+
+    const authBtn = document.getElementById('authBtn');
+    const authText = document.getElementById('authText');
+    const loginModal = document.getElementById('loginModal');
+    const closeLogin = document.getElementById('closeLogin');
+    const loginSubmit = document.getElementById('loginSubmit');
+    const loginEmail = document.getElementById('loginEmail');
+    const loginPassword = document.getElementById('loginPassword');
+    const loginError = document.getElementById('loginError');
+
+    // ==================== Toast ====================
+    function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = 'toast toast-' + type;
+      toast.innerHTML = '<span class="icon">' + (type === 'success' ? '✅' : '❌') + '</span><span>' + message + '</span>';
+      toastContainer.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    // ==================== API Helpers ====================
+    async function apiRequest(url, options = {}) {
+      const headers = { 'Content-Type': 'application/json', ...options.headers };
+      if (authToken) {
+        headers['Authorization'] = 'Bearer ' + authToken;
+      }
+      const response = await fetch(url, { ...options, headers });
+      return response;
+    }
+
+    // ==================== 登入相關 ====================
+    async function checkAuth() {
+      if (!authToken) {
+        updateAuthUI(null);
+        return;
+      }
+
+      try {
+        const res = await apiRequest('/api/me');
+        if (res.ok) {
+          const data = await res.json();
+          currentUser = data.user;
+          updateAuthUI(currentUser);
+          loadCartFromServer();
+        } else {
+          // Token 無效
+          localStorage.removeItem('authToken');
+          authToken = null;
+          updateAuthUI(null);
+        }
+      } catch (e) {
+        console.error('Auth check failed:', e);
+      }
+    }
+
+    const userInfo = document.getElementById('userInfo');
+    const userEmail = document.getElementById('userEmail');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    function updateAuthUI(user) {
+      if (user) {
+        authBtn.style.display = 'none';
+        userInfo.style.display = 'flex';
+        userEmail.textContent = user.email;
+      } else {
+        authBtn.style.display = 'flex';
+        userInfo.style.display = 'none';
+        userEmail.textContent = '';
+        cart = [];
+        updateCartUI();
+      }
+    }
+
+    async function handleLogin() {
+      const email = loginEmail.value.trim();
+      const password = loginPassword.value;
+
+      if (!email || !password) {
+        loginError.textContent = '請輸入帳號密碼';
+        loginError.style.display = 'block';
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          authToken = data.user.token;
+          localStorage.setItem('authToken', authToken);
+          currentUser = data.user;
+          updateAuthUI(currentUser);
+          loginModal.classList.remove('active');
+          loginEmail.value = '';
+          loginPassword.value = '';
+          loginError.style.display = 'none';
+          showToast('歡迎回來，' + data.user.name + '！');
+          loadCartFromServer();
+        } else {
+          loginError.textContent = data.error || '登入失敗';
+          loginError.style.display = 'block';
+        }
+      } catch (e) {
+        loginError.textContent = '網路錯誤，請稍後再試';
+        loginError.style.display = 'block';
+      }
+    }
+
+    async function handleLogout() {
+      try {
+        await apiRequest('/api/logout', { method: 'POST' });
+      } catch (e) {
+        // ignore
+      }
+      localStorage.removeItem('authToken');
+      authToken = null;
+      currentUser = null;
+      updateAuthUI(null);
+      showToast('已登出');
+    }
+
+    // ==================== 購物車相關 ====================
+    async function loadCartFromServer() {
+      if (!authToken) return;
+
+      try {
+        const res = await apiRequest('/api/cart');
+        if (res.ok) {
+          const data = await res.json();
+          // 轉換 API 回傳格式
+          cart = data.cart.map(item => ({
+            id: item.product_id,
+            cartItemId: item.id,
+            name: item.product_name,
+            price: item.product_price,
+            image: item.product_image,
+            quantity: item.quantity
+          }));
+          updateCartUI();
+        }
+      } catch (e) {
+        console.error('Load cart failed:', e);
+      }
+    }
+
+    function updateCartUI() {
+      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.textContent = total;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<div class="cart-empty"><span class="icon">🛒</span><p>購物車是空的</p></div>';
+        cartTotal.textContent = '$0';
+        checkoutBtn.disabled = true;
+      } else {
+        let html = '';
+        let totalPrice = 0;
+
+        cart.forEach((item, index) => {
+          totalPrice += item.price * item.quantity;
+          html += '<div class="cart-item">' +
+            '<div class="cart-item-image"><img src="' + item.image + '" alt="' + item.name + '"></div>' +
+            '<div class="cart-item-info">' +
+            '<div class="cart-item-name">' + item.name + '</div>' +
+            '<div class="cart-item-price">$' + item.price.toLocaleString() + ' × ' + item.quantity + '</div>' +
+            '</div>' +
+            '<button class="cart-item-remove" onclick="removeFromCart(' + index + ')">🗑️</button>' +
+            '</div>';
+        });
+
+        cartItems.innerHTML = html;
+        cartTotal.textContent = '$' + totalPrice.toLocaleString();
+        checkoutBtn.disabled = false;
+        cartDataInput.value = JSON.stringify({ items: cart, total: totalPrice });
+      }
+    }
+
+    async function addToCart(product) {
+      // 未登入則彈出登入視窗
+      if (!currentUser) {
+        showToast('請先登入會員', 'error');
+        loginModal.classList.add('active');
+        return;
+      }
+
+      try {
+        const res = await apiRequest('/api/cart', {
+          method: 'POST',
+          body: JSON.stringify({ product })
+        });
+
+        if (res.ok) {
+          // 重新載入購物車
+          await loadCartFromServer();
+          showToast('已加入購物車');
+        } else {
+          const data = await res.json();
+          showToast(data.error || '加入失敗', 'error');
+        }
+      } catch (e) {
+        showToast('網路錯誤', 'error');
+      }
+    }
+
+    async function removeFromCart(index) {
+      const item = cart[index];
+      if (!item || !item.cartItemId) return;
+
+      try {
+        const res = await apiRequest('/api/cart/' + item.cartItemId, { method: 'DELETE' });
+        if (res.ok) {
+          await loadCartFromServer();
+          showToast('已移除', 'error');
+        }
+      } catch (e) {
+        showToast('移除失敗', 'error');
+      }
+    }
+
+    // ==================== Event Listeners ====================
+
+    // 購物車 Modal
+    cartBtn.addEventListener('click', () => cartModal.classList.add('active'));
+    closeCart.addEventListener('click', () => cartModal.classList.remove('active'));
+    cartModal.addEventListener('click', (e) => { if (e.target === cartModal) cartModal.classList.remove('active'); });
+
+    // 登入 Modal
+    authBtn.addEventListener('click', () => {
+      loginModal.classList.add('active');
+    });
+    logoutBtn.addEventListener('click', () => {
+      handleLogout();
+    });
+    closeLogin.addEventListener('click', () => loginModal.classList.remove('active'));
+    loginModal.addEventListener('click', (e) => { if (e.target === loginModal) loginModal.classList.remove('active'); });
+    loginSubmit.addEventListener('click', handleLogin);
+    loginPassword.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleLogin(); });
+
+    // 加入購物車
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const product = JSON.parse(e.currentTarget.dataset.product);
+        addToCart(product);
+      });
+    });
+
+    // ==================== 產品篩選 ====================
+    const allProducts = <%- JSON.stringify(products) %>;
+    let currentFilter = 'all';
+
+    function filterProducts(filter) {
+      currentFilter = filter;
+      const productsGrid = document.querySelector('.products-grid');
+      const cards = productsGrid.querySelectorAll('.product-card');
+
+      cards.forEach(card => {
+        const productId = parseInt(card.dataset.productId);
+        const product = allProducts.find(p => p.id === productId);
+        if (!product) return;
+
+        let show = false;
+        if (filter === 'all') {
+          show = true;
+        } else if (filter === 'hot') {
+          show = product.isHot;
+        } else {
+          show = product.category === filter;
+        }
+
+        card.style.display = show ? '' : 'none';
+        if (show) {
+          card.style.animation = 'fadeIn 0.3s ease';
+        }
+      });
+
+      // 滾動到產品區
+      document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 分類區點擊
+    document.querySelectorAll('.category-nav-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = item.dataset.category;
+
+        // 更新 active 狀態
+        document.querySelectorAll('.category-nav-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        filterProducts(category);
+        showToast('已篩選：' + (category === 'all' ? '全部商品' : category));
+      });
+    });
+
+    // 本季推薦點擊
+    document.querySelectorAll('.recommend-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const filter = card.dataset.filter;
+
+        // 更新分類 active 狀態
+        document.querySelectorAll('.category-nav-item').forEach(i => {
+          i.classList.toggle('active', i.dataset.category === filter || (filter === 'hot' && i.dataset.category === 'all'));
+        });
+
+        filterProducts(filter);
+        showToast('已篩選：' + (filter === 'hot' ? '熱銷商品' : filter));
+      });
+    });
+
+    // ==================== 初始化 ====================
+    checkAuth();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單確認 - MichaelShop 購物網</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style>
+        .checkout-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #e31937 0%, #ff6b6b 100%);
+        }
+
+        .checkout-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 520px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .checkout-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .checkout-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .checkout-desc {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .order-summary {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .order-summary h4 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed #ddd;
+            font-size: 14px;
+        }
+
+        .order-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .order-item-name {
+            color: #333;
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .order-item-price {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding-top: 15px;
+            margin-top: 10px;
+            border-top: 2px solid #e31937;
+            color: #e31937;
+        }
+
+        .ecpay-badge {
+            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .payment-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #e31937 0%, #c41230 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .payment-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(227, 25, 55, 0.4);
+        }
+
+        .payment-btn:active {
+            transform: translateY(0);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #e31937;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .payment-method {
+            background: #f0f0f0;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="checkout-page">
+        <div class="checkout-card">
+            <div class="checkout-header">
+                <div class="checkout-icon">🛒</div>
+                <h1 class="checkout-title">訂單確認</h1>
+                <p class="checkout-desc">請確認訂單內容後，點擊下方按鈕進行付款</p>
+            </div>
+
+            <div class="order-summary">
+                <h4>📦 訂單明細</h4>
+                <% orderItems.forEach(function(item) { %>
+                    <div class="order-item">
+                        <span class="order-item-name">
+                            <%= item.name %> × <%= item.quantity %>
+                        </span>
+                        <span class="order-item-price">$<%= (item.price * item.quantity).toLocaleString() %></span>
+                    </div>
+                    <% }); %>
+                        <div class="order-total">
+                            <span>應付金額</span>
+                            <span>$<%= totalAmount.toLocaleString() %></span>
+                        </div>
+            </div>
+
+            <div class="ecpay-badge">
+                🔒 使用綠界科技安全付款
+            </div>
+
+            <!-- 綠界付款表單 - SDK 產生 -->
+            <div id="ecpayFormContainer" style="display: none;">
+                <%- ecpayFormHtml.replace(/action="[^" ]*"/, 'action="' + ecpayUrl + '"' ) %>
+            </div>
+
+            <!-- 自訂按鈕 - 點擊後提交 SDK 表單 -->
+            <button type="button" class="payment-btn" id="payBtn">
+                💳 確認付款
+            </button>
+
+            <a href="/" class="back-link">← 返回繼續購物</a>
+
+            <div class="payment-methods">
+                <span class="payment-method">信用卡</span>
+                <span class="payment-method">WebATM</span>
+                <span class="payment-method">ATM</span>
+                <span class="payment-method">超商代碼</span>
+                <span class="payment-method">超商條碼</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 點擊付款按鈕時提交 SDK 表單
+        document.getElementById('payBtn').addEventListener('click', function () {
+            const form = document.getElementById('_form_aiochk');
+            if (form) {
+                localStorage.removeItem('cart');
+                form.submit();
+            }
+        });
+    </script>
+</body>
+
+</html>
